@@ -1,0 +1,14 @@
+import { Rect } from "../mir.slint";
+
+export component AppWindow inherits Window {
+    title: "Rectangles";
+    in property <[Rect]> model;
+    for rect[idx] in root.model : item := Rectangle {
+        x: rect.x;
+	y: rect.y;
+	width: rect.width;
+	height: rect.height;
+	background: rect.color;
+	opacity: 0.5;
+    }
+}
