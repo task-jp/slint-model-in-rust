@@ -8,17 +8,16 @@ slint::include_modules!();
 fn main() -> Result<(), Box<dyn Error>> {
     let ui = AppWindow::new()?;
     let size = ui.window().size();
-    let half_width = size.width / 2;
-    let half_height = size.height / 2;
 
     let model = Rc::new(VecModel::default());
-    // insert 100 rectangles with random position and color
-    for _ in 0..100 {
+    for _ in 0..1000 {
+        let width = rand::random::<f32>() * size.width as f32 * 0.5;
+        let height = rand::random::<f32>() * size.height as f32 * 0.5;
         model.push(Rect{
-            x: rand::random::<f32>() * half_width as f32,
-            y: rand::random::<f32>() * half_height as f32,
-            width: 10.0 + rand::random::<f32>() * half_width as f32,
-            height: 10.0 + rand::random::<f32>() * half_height as f32,
+            x: rand::random::<f32>() * (size.width as f32 - width),
+            y: rand::random::<f32>() * (size.height as f32 - height),
+            width: width,
+            height: height,
             color: Color::from_rgb_u8(rand::random::<u8>(), rand::random::<u8>(), rand::random::<u8>()),
         });
     }

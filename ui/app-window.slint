@@ -1,4 +1,4 @@
-import { Rect } from "../mir.slint";
+import { Rect } from "backend.slint";
 
 export component AppWindow inherits Window {
     title: "Rectangles";
@@ -9,6 +9,8 @@ export component AppWindow inherits Window {
 	width: rect.width;
 	height: rect.height;
 	background: rect.color;
-	opacity: 0.5;
+	opacity: 0.25;
+	border-width: 1px;
+	border-color: black;
     }
 }
